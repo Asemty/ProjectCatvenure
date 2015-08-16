@@ -24,5 +24,7 @@ public class SpriteController {
 		Sprites.putToList("beholderIcon", "res/dungeon/beholderIcon.png");
 		Sprites.putToList("beholder", "res/dungeon/beholder.png");
 		Sprites.putToList("catIcon", "res/dungeon/catIcon.png");
+		Sprites.putToList("stairs", "res/dungeon/stairs.png");
+		
 	}
 }

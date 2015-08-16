@@ -5,6 +5,7 @@ import java.awt.Point;
 import ru.asemty.catvenure.main.engine.enemy.Enemis;
 import ru.asemty.catvenure.main.engine.mapobjects.EnemyParty;
 import ru.asemty.catvenure.main.engine.mapobjects.IMapObject;
+import ru.asemty.catvenure.main.engine.mapobjects.Stairs;
 
 public class Stage {
 	public boolean[][] passability;
@@ -25,8 +26,8 @@ public class Stage {
 		.addEnemy(Enemis.copy(Enemis.beholder))
 		.addEnemy(Enemis.copy(Enemis.beholder))
 		.addEnemy(Enemis.copy(Enemis.beholder))
-		.addEnemy(Enemis.copy(Enemis.beholder))
 		.addEnemy(Enemis.copy(Enemis.beholder));
+		result.objects[24][10] = new Stairs();
 		result.catPatyPos= new Point(15,10);
 		return result;
 	}

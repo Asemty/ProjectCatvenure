@@ -1,19 +1,24 @@
 package ru.asemty.catvenure.main.gamestate;
 
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 
 import lib.Sprites;
+import ru.asemty.catvenure.main.engine.Cat;
 import ru.asemty.catvenure.main.engine.Engine;
 import ru.asemty.catvenure.main.engine.EquipableItem;
 import ru.asemty.catvenure.main.engine.Item;
+import ru.asemty.catvenure.main.engine.enemy.Enemy;
 import ru.asemty.catvenure.main.engine.mapobjects.EnemyParty;
 
 public class InFightState implements IGameState{
 
 	EnemyParty enemyParty;
-	public InFightState(EnemyParty enemyParty) {
+	Point enemyPartyLocation;
+	public InFightState(EnemyParty enemyParty,Point enemyLoc) {
 		this.enemyParty=enemyParty;
+		this.enemyPartyLocation=enemyLoc;
 	}
 
 	@Override
@@ -47,6 +52,33 @@ public class InFightState implements IGameState{
 	public void Step() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void nextTurn(){
+		
+	}
+	
+	public void fightEnd(boolean win){
+		Engine.goToVillage();
+	}
+	
+	public boolean checkCatIsLive(){
+		for(Cat cat: Engine.party.cats){
+			if(!cat.isDead()){
+				return true;
+			}
+		}
+		fightEnd(false);
+		return false;
+	}
+	public boolean checkEnemyIsLive(){
+		for(Enemy enemy: enemyParty.enemis){
+			if(!enemy.isDead()){
+				return true;
+			}
+		}
+		fightEnd(true);
+		return false;
 	}
 
 }

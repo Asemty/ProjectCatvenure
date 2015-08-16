@@ -3,10 +3,11 @@ package ru.asemty.catvenure.main.engine;
 import java.util.ArrayList;
 
 import ru.asemty.catvenure.main.Game;
+import ru.asemty.catvenure.main.engine.fight.Fighter;
 
-public class Cat {
+public class Cat extends Fighter{
 	public String name;
-	public int cunning, wisdom, vim, hp, mp,mhp,mmp,exp=0;
+	public int exp;
 	public ArrayList<Item> bag = new ArrayList<Item>();
 	public static String[] catNames=new String[]{
 		"Tiger","Shadow","Oliver",
@@ -29,6 +30,7 @@ public class Cat {
 		return this;
 	}
 	public Cat(String name,int abilPoint) {
+		super();
 		this.name=name;
 		this.cunning=0;
 		this.wisdom=0;
@@ -50,6 +52,7 @@ public class Cat {
 	}
 	
 	public Cat(String name,int c,int w,int v) {
+		super();
 		this.name=name;
 		this.cunning=c;
 		this.wisdom=w;

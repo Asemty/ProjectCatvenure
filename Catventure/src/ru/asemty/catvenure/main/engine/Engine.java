@@ -1,5 +1,7 @@
 package ru.asemty.catvenure.main.engine;
 
+import java.awt.Point;
+
 import ru.asemty.catvenure.main.Game;
 import ru.asemty.catvenure.main.engine.mapobjects.EnemyParty;
 import ru.asemty.catvenure.main.gamestate.InCastleState;
@@ -41,8 +43,8 @@ public class Engine {
 		}
 	}
 
-	public static void goToFight(EnemyParty enemyParty) {
-		Game.curentState= new InFightState(enemyParty);
+	public static void goToFight(EnemyParty enemyParty,Point p) {
+		Game.curentState= new InFightState(enemyParty,p);
 	}
 
 }

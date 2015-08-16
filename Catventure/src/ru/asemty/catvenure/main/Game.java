@@ -4,17 +4,18 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
+import lib.MainClass;
 import ru.asemty.catvenure.main.gamestate.IGameState;
 import ru.asemty.catvenure.main.gamestate.InMenuState;
-import lib.MainClass;
 
 public class Game extends MainClass{
 	private static final long serialVersionUID = -8736621867946390610L;
 	public static IGameState curentState;
 	public static Random rand=new Random();
 	public static void main(String[] args) {
-		Game.mainFunc(args, GameConst.screenWidth, GameConst.screenHeight, 20, new Game());
+		Game.mainFunc(args, GameConst.screenWidth-12, GameConst.screenHeight-12, 2000, new Game());
 		Game.frame.setTitle("Project \"Catventure\"");
+		Game.frame.setResizable(false);
 	}
 	public Game(){
 		SpriteController.init();
