@@ -26,7 +26,7 @@ public class Stage {
 		.addEnemy(Enemis.copy(Enemis.beholder))
 		.addEnemy(Enemis.copy(Enemis.beholder))
 		.addEnemy(Enemis.copy(Enemis.beholder))
-		.addEnemy(Enemis.copy(Enemis.beholder));
+		.addEnemy(Enemis.copy(Enemis.beholder),4);
 		result.objects[24][10] = new Stairs();
 		result.catPatyPos= new Point(15,10);
 		return result;

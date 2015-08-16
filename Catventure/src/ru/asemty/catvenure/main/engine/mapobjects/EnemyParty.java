@@ -1,48 +1,60 @@
 package ru.asemty.catvenure.main.engine.mapobjects;
 
 import java.awt.Point;
-import java.util.ArrayList;
 
 import ru.asemty.catvenure.main.engine.Engine;
 import ru.asemty.catvenure.main.engine.Treasure;
-import ru.asemty.catvenure.main.engine.enemy.Enemis;
 import ru.asemty.catvenure.main.engine.enemy.Enemy;
 
 public class EnemyParty implements IMapObject {
-	public ArrayList<Enemy> enemis;
+	public Enemy[] enemis;
 	public Treasure treasure;
 
 	public EnemyParty() {
-		enemis = new ArrayList<Enemy>();
+		enemis = new Enemy[6];
 	}
-	public String getSprite(){
-		if(enemis.size()>0){
-			return enemis.get(0).sprite+"Icon";
-		}else{
-			return "";
+
+	public String getSprite() {
+
+		for (int i = 0; i < 6; i++) {
+			if (enemis[i] != null && !enemis[0].sprite.equals("")) {
+				return enemis[i].sprite + "Icon";
+			}
 		}
+		return "";
+
 	}
-	public EnemyParty copy(){
+
+	public EnemyParty copy() {
 		EnemyParty copy = new EnemyParty();
-		for(Enemy e:enemis){
-			copy.enemis.add(Enemis.copy(e));
+		for (int i = 0; i < 6; i++) {
+			copy.enemis[i]=enemis[i];
 		}
 		return copy;
 	}
-	public EnemyParty addEnemy(Enemy enemy){
-		enemis.add(enemy);
+
+	public EnemyParty addEnemy(Enemy enemy,int i) {
+		enemis[i]=enemy;
 		return this;
 	}
-	
+	public EnemyParty addEnemy(Enemy enemy) {
+		for(int i=0;i<6;i++){
+			if(enemis[i]==null){
+				return this.addEnemy(enemy, i);
+			}
+		}
+		return this;
+
+	}
 	@Override
 	public void interact() {
-		for(int i=0;i<25;i++){
-			for(int j=0;j<20;j++){
-				if(Engine.dungeon.getCurrentStage().objects[i][j]==this){
-					Engine.goToFight(this,new Point(i,j));
+		for (int i = 0; i < 25; i++) {
+			for (int j = 0; j < 20; j++) {
+				if (Engine.dungeon.getCurrentStage().objects[i][j] == this) {
+					Engine.goToFight(this, new Point(i, j));
 				}
 			}
 		}
-		
+
 	}
 }

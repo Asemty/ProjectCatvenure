@@ -4,9 +4,13 @@ import java.util.ArrayList;
 
 import ru.asemty.catvenure.main.Game;
 import ru.asemty.catvenure.main.engine.fight.Fighter;
+import ru.asemty.catvenure.main.engine.fight.actions.FightActionPush;
 
 public class Cat extends Fighter{
+	
+
 	public String name;
+	//хитрость, мудрость, сила
 	public int exp;
 	public ArrayList<Item> bag = new ArrayList<Item>();
 	public static String[] catNames=new String[]{
@@ -31,6 +35,7 @@ public class Cat extends Fighter{
 	}
 	public Cat(String name,int abilPoint) {
 		super();
+		actions.add(new FightActionPush());
 		this.name=name;
 		this.cunning=0;
 		this.wisdom=0;
@@ -48,11 +53,12 @@ public class Cat extends Fighter{
 		}
 	}
 	public Cat(String name) {
-		this(name,5);
+		this(name,10);
 	}
 	
 	public Cat(String name,int c,int w,int v) {
 		super();
+		actions.add(new FightActionPush());
 		this.name=name;
 		this.cunning=c;
 		this.wisdom=w;
