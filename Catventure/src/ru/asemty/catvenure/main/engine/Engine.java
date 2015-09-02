@@ -20,14 +20,17 @@ public class Engine {
 	
 	public static void goToVillage() {
 		Game.curentState= new InVillageState();
+		Game.timer.stop();
 	}
 
 	public static void goToPotionShop() {
 		Game.curentState= new InPotionShopState();
+		Game.timer.stop();
 	}
 
 	public static void goToCastle() {
 		Game.curentState= new InCastleState();
+		Game.timer.stop();
 	}
 
 	public static void goToDungeon() {
@@ -41,9 +44,11 @@ public class Engine {
 				kitty.mp=kitty.mmp;
 			}
 		}
+		Game.timer.stop();
 	}
 
 	public static void goToFight(EnemyParty enemyParty,Point p) {
+		Game.timer.start();
 		Game.curentState= new InFightState(enemyParty,p);
 	}
 

@@ -55,10 +55,12 @@ public class InFightState implements IGameState {
 		gr.fillRect(0, 0, GameConst.screenWidth, GameConst.screenHeight / 3);
 		gr.setColor(Color.black);
 		ArrayList<FightAction> fa = this.getCurrentFighter().actions;
+		if(fa.size()>0){
 		gr.drawString(fa.get(this.currentAction).getDescription(), 0, 12);
 		for (int i = 0; i < this.getCurrentFighter().actions.size(); i++) {
 			gr.setColor(i == this.currentAction ? Color.black : Color.gray);
 			gr.drawString(fa.get(i).getName(), 600, 12 + 14 * i);
+		}
 		}
 		int x;
 		int y;
@@ -142,6 +144,7 @@ public class InFightState implements IGameState {
 				currentTarget = 0;
 			}
 		}
+		
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			FightAction.PossibleTargetEnum pte = this.getPossibleTarget();
 			if(pte == FightAction.PossibleTargetEnum.massively || pte == FightAction.PossibleTargetEnum.friendlyMassively){
@@ -202,7 +205,10 @@ public class InFightState implements IGameState {
 			this.nextTurn();
 		}
 		Fighter fighter = getCurrentFighter();
-		if (fighter != null && !fighter.isDead()) {
+		if (fighter != null) {
+			if(fighter.isDead()){
+				turn();
+			}
 			if (fighter instanceof Cat) {
 
 			} else if (fighter instanceof Enemy) {
@@ -218,7 +224,7 @@ public class InFightState implements IGameState {
 	}
 
 	public FightAction.PossibleTargetEnum getPossibleTarget() {
-		return getCurrentFighter().actions.get(this.currentAction).getPossibleTarget();
+		return getCurrentFighter().actions.size()>0?getCurrentFighter().actions.get(this.currentAction).getPossibleTarget():null;
 	}
 
 	public ArrayList<Fighter> getFigterSortedList() {

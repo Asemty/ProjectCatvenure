@@ -25,7 +25,7 @@ public class FightActionPush extends FightAction{
 	
 	@Override
 	public String getDescription(){
-		return "Push your enemy!";
+		return "Push-Ro-Dah!";
 	}
 
 }
