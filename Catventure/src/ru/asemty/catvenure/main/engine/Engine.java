@@ -35,15 +35,6 @@ public class Engine {
 
 	public static void goToDungeon() {
 		Game.curentState= new InDungeonState();
-		for(int i=0;i<6;i++){
-			Cat kitty= party.cats[i];
-			if(kitty!=null){
-				kitty.mhp=kitty.vim*10+10;
-				kitty.mmp=kitty.wisdom*10;
-				kitty.hp=kitty.mhp;
-				kitty.mp=kitty.mmp;
-			}
-		}
 		Game.timer.stop();
 	}
 

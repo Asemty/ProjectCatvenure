@@ -4,6 +4,7 @@ import java.awt.Point;
 
 import ru.asemty.catvenure.main.engine.Engine;
 import ru.asemty.catvenure.main.engine.Treasure;
+import ru.asemty.catvenure.main.engine.enemy.Enemis;
 import ru.asemty.catvenure.main.engine.enemy.Enemy;
 
 public class EnemyParty implements IMapObject {
@@ -11,12 +12,12 @@ public class EnemyParty implements IMapObject {
 	public Treasure treasure;
 
 	public EnemyParty() {
-		enemis = new Enemy[6];
+		enemis = new Enemy[9];
 	}
 
 	public String getSprite() {
 
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 9; i++) {
 			if (enemis[i] != null && !enemis[0].sprite.equals("")) {
 				return enemis[i].sprite + "Icon";
 			}
@@ -27,8 +28,8 @@ public class EnemyParty implements IMapObject {
 
 	public EnemyParty copy() {
 		EnemyParty copy = new EnemyParty();
-		for (int i = 0; i < 6; i++) {
-			copy.enemis[i]=enemis[i];
+		for (int i = 0; i < 9; i++) {
+			copy.enemis[i]=Enemis.copy(enemis[i]);
 		}
 		return copy;
 	}
@@ -38,7 +39,7 @@ public class EnemyParty implements IMapObject {
 		return this;
 	}
 	public EnemyParty addEnemy(Enemy enemy) {
-		for(int i=0;i<6;i++){
+		for(int i=0;i<9;i++){
 			if(enemis[i]==null){
 				return this.addEnemy(enemy, i);
 			}

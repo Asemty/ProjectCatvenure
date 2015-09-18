@@ -3,14 +3,16 @@ package ru.asemty.catvenure.main.engine;
 import java.util.ArrayList;
 
 import ru.asemty.catvenure.main.Game;
-import ru.asemty.catvenure.main.engine.fight.Fighter;
-import ru.asemty.catvenure.main.engine.fight.actions.FightActionPush;
+import ru.asemty.catvenure.main.engine.fight.actions.FightAction;
+import ru.asemty.catvenure.main.engine.fight.actions.FightActionsList;
+import ru.asemty.catvenure.main.engine.rolesystem.passiveskill.PassiveSkill;
 
-public class Cat extends Fighter{
+public class Cat{
 	
-
+	public int cunning, wisdom, vim;
+	public ArrayList<FightAction> actions = new ArrayList<FightAction>();
 	public String name;
-	//хитрость, мудрость, сила
+	
 	public int exp;
 	public ArrayList<Item> bag = new ArrayList<Item>();
 	public static String[] catNames=new String[]{
@@ -35,7 +37,7 @@ public class Cat extends Fighter{
 	}
 	public Cat(String name,int abilPoint) {
 		super();
-		actions.add(new FightActionPush());
+		actions.add(FightActionsList.Push);
 		this.name=name;
 		this.cunning=0;
 		this.wisdom=0;
@@ -58,10 +60,13 @@ public class Cat extends Fighter{
 	
 	public Cat(String name,int c,int w,int v) {
 		super();
-		actions.add(new FightActionPush());
+		actions.add(FightActionsList.Push);
 		this.name=name;
 		this.cunning=c;
 		this.wisdom=w;
 		this.vim=v;
 	}
+	
+	public ArrayList<PassiveSkill> passiveSkills = new ArrayList<PassiveSkill>();
+	public ArrayList<Item> items = new ArrayList<Item>();
 }

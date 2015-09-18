@@ -23,7 +23,7 @@ public class Stage {
 			result.passability[i][10] = true;
 		}
 		result.objects[4][10] = new EnemyParty()
-		.addEnemy(Enemis.copy(Enemis.beholder))
+		.addEnemy(Enemis.copy( Enemis.beholder))
 		.addEnemy(Enemis.copy(Enemis.beholder))
 		.addEnemy(Enemis.copy(Enemis.beholder))
 		.addEnemy(Enemis.copy(Enemis.beholder),4);

@@ -2,30 +2,25 @@ package ru.asemty.catvenure.main.engine;
 
 import java.util.ArrayList;
 
-import ru.asemty.catvenure.main.engine.fight.actions.FightActionFireBall;
-import ru.asemty.catvenure.main.engine.fight.actions.FightActionHeal;
-import ru.asemty.catvenure.main.engine.fight.actions.FightActionMeteorRain;
+import ru.asemty.catvenure.main.engine.fight.actions.FightActionsList;
 
 public class Party {
 	public int gold = 100;
 	public ArrayList<Item> bag = new ArrayList<Item>();
 	public Cat[] cats;
-	public Party(){
-		this.cats = new Cat[] { 
-				Cat.getRandomCat().addItem(Items.hat), 
-				Cat.getRandomCat().addItem(Items.shield), 
-				null,
-				null, 
-				null, 
-				null };
-		cats[0].actions.add(new FightActionFireBall());
-		cats[0].actions.add(new FightActionMeteorRain());
-		cats[1].actions.add(new FightActionHeal());
+
+	public Party() {
+		this.cats = new Cat[9];
+		this.cats[0] = Cat.getRandomCat().addItem(Items.hat);
+		this.cats[1] = Cat.getRandomCat().addItem(Items.shield);
+		this.cats[0].actions.add(FightActionsList.FireBall);
+		this.cats[0].actions.add(FightActionsList.MeteorRain);
+		this.cats[1].actions.add(FightActionsList.Heal);
 	}
 
 	public Party addItem(Item item) {
 		this.bag.add(item);
-		
+
 		return this;
 	}
 }

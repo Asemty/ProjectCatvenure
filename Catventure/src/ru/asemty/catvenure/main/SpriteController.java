@@ -20,6 +20,7 @@ public class SpriteController {
 		
 		Sprites.putToList("shield", "res/cat/shield.png");
 		Sprites.putToList("hat", "res/cat/hat.png");
+		Sprites.putToList("arrow", "res/dungeon/arrow.png");
 		
 		Sprites.putToList("beholderIcon", "res/dungeon/beholderIcon.png");
 		Sprites.putToList("beholder", "res/dungeon/beholder.png");

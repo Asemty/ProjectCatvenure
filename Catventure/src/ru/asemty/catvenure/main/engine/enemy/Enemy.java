@@ -1,8 +1,12 @@
 package ru.asemty.catvenure.main.engine.enemy;
 
-import ru.asemty.catvenure.main.engine.fight.Fighter;
+import java.util.ArrayList;
 
-public class Enemy extends Fighter {
+import ru.asemty.catvenure.main.engine.fight.actions.FightAction;
+
+public class Enemy {
+	public int hp, mp, cunning, wisdom, vim;
+	public ArrayList<FightAction> actions = new ArrayList<FightAction>();
 	public String name;
 	public String sprite;
 
@@ -12,22 +16,22 @@ public class Enemy extends Fighter {
 		this.sprite = sprite;
 	}
 
-	public Enemy setHp(int h) {
-		this.mhp = h;
-		this.hp = mhp;
-		return this;
-	}
-
-	public Enemy setMp(int m) {
-		this.mmp = m;
-		this.mp = mhp;
-		return this;
-	}
-	
 	public Enemy setStats(int c,int w,int v) {
 		this.cunning = c;
 		this.wisdom = w;
 		this.vim = v;
 		return this;
 	}
+	
+	public Enemy setHp(int h) {
+		this.hp = h;
+		return this;
+	}
+
+	public Enemy setMp(int m) {
+		this.mp = m;
+		return this;
+	}
+	
+	
 }

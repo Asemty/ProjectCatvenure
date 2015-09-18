@@ -4,10 +4,16 @@ import ru.asemty.catvenure.main.engine.fight.Fighter;
 
 public abstract class FightAction {
 	public static enum PossibleTargetEnum {
-		self, male, range, friendly, massively, friendlyMassively
+		self,male,range,massively,all
 	}
+	public PossibleTargetEnum pte;
+	public String name;
+	public String description;
+	public FightAction(String name,String description,PossibleTargetEnum pte){
+		this.name=name;
+		this.description=description;
+		this.pte=pte;
+	}
+	
 	public abstract void action(Fighter actor,Fighter targets);
-	public abstract PossibleTargetEnum getPossibleTarget();
-	public abstract String getName();
-	public abstract String getDescription();
 }
